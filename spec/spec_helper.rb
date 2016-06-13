@@ -4,6 +4,9 @@ require 'light/decorator'
 require 'rubygems'
 require 'bundler/setup'
 
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 require 'ffaker'
 require 'combustion'
 require 'factory_girl'

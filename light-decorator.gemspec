@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'capybara', '~> 2.7.0'
   spec.add_development_dependency 'factory_girl', '~> 4.0'
   spec.add_development_dependency 'ffaker', '~> 2.2.0'
+  spec.add_development_dependency 'codeclimate-test-reporter'
 end
