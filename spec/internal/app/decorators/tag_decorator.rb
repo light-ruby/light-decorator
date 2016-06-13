@@ -1,0 +1,2 @@
+class TagDecorator < ApplicationDecorator
+end
