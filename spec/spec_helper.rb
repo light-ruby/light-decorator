@@ -1,11 +1,11 @@
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'light/decorator'
 
 require 'rubygems'
 require 'bundler/setup'
-
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
 
 require 'ffaker'
 require 'combustion'
