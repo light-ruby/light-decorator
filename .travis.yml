@@ -11,3 +11,7 @@ gemfile:
   - gemfiles/rails_4_1.gemfile
   - gemfiles/rails_4_2.gemfile
   - gemfiles/rails_5_0.gemfile
+
+addons:
+  code_climate:
+    repo_token: f5d73d0bacb7771f55364c3af480bf0338cef449dcea216f8f73097acdb93642
