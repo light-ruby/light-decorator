@@ -46,6 +46,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    codeclimate-test-reporter (0.5.1)
+      simplecov (>= 0.7.1, < 1.0.0)
     combustion (0.5.4)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
@@ -128,6 +130,7 @@ DEPENDENCIES
   appraisal (~> 2.1)
   bundler (~> 1.12)
   capybara (~> 2.7.0)
+  codeclimate-test-reporter
   combustion (~> 0.5.4)
   factory_girl (~> 4.0)
   ffaker (~> 2.2.0)
