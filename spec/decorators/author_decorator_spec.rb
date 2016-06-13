@@ -12,6 +12,7 @@ RSpec.describe AuthorDecorator do
     author.posts.count
     expect(author).to_not be_decorated
     expect(author.decorate).to be_decorated
+    expect(author.decorate(with: AuthorDecorator)).to be_decorated
   end
 
   it 'decorate author via class' do
@@ -54,6 +55,7 @@ RSpec.describe AuthorDecorator do
   it 'decorate has many association' do
     5.times { create(:post, author: author) }
 
+    expect(author.reload.decorate.posts).to be_decorated
     expect(author.reload.decorate.posts.take).to be_decorated
 
     author.decorate.posts.each do |post|
