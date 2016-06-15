@@ -9,3 +9,4 @@
 /tmp/
 /.idea/
 /spec/internal/db/combustion_test.sqlite
+/*.gem
