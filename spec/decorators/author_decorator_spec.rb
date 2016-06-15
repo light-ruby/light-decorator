@@ -30,6 +30,10 @@ RSpec.describe AuthorDecorator do
     expect(author.decorate(soft: true, with: 'SuperDecorator')).to eql(author)
   end
 
+  it 'override model methods' do
+    expect(author.decorate.first_name).to eql(author.first_name * 3)
+  end
+
   it 'decorate collection' do
     expect(Author.all).to_not be_decorated
     expect(Author.decorate).to be_decorated
@@ -48,7 +52,7 @@ RSpec.describe AuthorDecorator do
 
     authors = Author.all
     authors.decorate.each do |author|
-      expect(author.full_name).to eql("#{author.first_name} #{author.last_name}")
+      expect(author.full_name).to eql("#{author.object.first_name} #{author.object.last_name}")
     end
   end
 

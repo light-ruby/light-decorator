@@ -52,7 +52,7 @@ module Light
 
       def delegate_methods
         # It's more faster than using Forwardable
-        (object.public_methods - Light::Decorator::NOT_DELEGATABLE_METHODS).each do |method|
+        (object.public_methods - methods - Light::Decorator::NOT_DELEGATABLE_METHODS).each do |method|
           define_singleton_method method do |*args, &block|
             object.__send__(method, *args, &block)
           end
