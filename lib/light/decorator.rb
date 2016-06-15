@@ -1,6 +1,6 @@
+require 'rails'
+require 'active_record'
 require 'request_store'
-require 'rails/railtie'
-require 'active_support/concern'
 
 require 'light/decorator/version'
 require 'light/decorator/exceptions'
@@ -13,6 +13,8 @@ require 'light/decorator/decorate'
 
 module Light
   module Decorator
-    NOT_DELEGATABLE_METHODS = Kernel.methods + [:decorated?, :==, :===, :eql?, :equal?]
+    NOT_DELEGATABLE_METHODS = (
+      Kernel.methods + ActiveRecord::Base.methods + [:decorated?, :==, :===, :eql?, :equal?]
+    ).freeze
   end
 end

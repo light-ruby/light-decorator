@@ -1,8 +1,6 @@
 module Light
   module Decorator
     class Decorate
-      extend Forwardable
-
       # @return original object
       attr_reader :object
 
@@ -20,21 +18,20 @@ module Light
         decorate_associations
       end
 
-      class << self
-        alias decorate new
-      end
-
+      # Check current ActiveRecord::Model is decorated or not
+      #
+      # @return [Bool]
       def decorated?
         true
       end
 
+      # Current view scope
+      #
+      # @return [ActionView::Base]
       def helpers
         return @helpers if defined?(@helpers)
         @helpers = Light::Decorator::ViewContext.current
       end
-
-      alias o object
-      alias h helpers
 
       def ==(other)
         super || object == other
@@ -44,22 +41,25 @@ module Light
         super || object.eql?(other)
       end
 
+      class << self
+        alias decorate new
+      end
+
+      alias o object
+      alias h helpers
+
       private
 
       def delegate_methods
-        methods = object.methods - Light::Decorator::NOT_DELEGATABLE_METHODS
-        self.class.def_delegators :@object, *methods
+        # It's more faster than using Forwardable
+        (object.public_methods - Light::Decorator::NOT_DELEGATABLE_METHODS).each do |method|
+          define_singleton_method method do |*args, &block|
+            object.__send__(method, *args, &block)
+          end
+        end
       end
 
       def decorate_associations
-        # TODO: Remove it before production
-        # meta = class << self; self; end
-        # object._reflections.keys.each do |reflection_name|
-        #   meta.send(:define_method, "#{reflection_name}_a") do
-        #     [4,3,2,1]
-        #   end
-        # end
-
         object.class.reflect_on_all_associations.map(&:name).each do |reflection_name|
           define_singleton_method reflection_name do
             object.public_send(reflection_name).decorate(@options.reverse_merge(soft: true))

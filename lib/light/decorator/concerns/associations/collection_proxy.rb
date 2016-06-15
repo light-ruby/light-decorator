@@ -5,6 +5,10 @@ module Light
         module CollectionProxy
           extend ActiveSupport::Concern
 
+          # Decorate ActiveRecord::Model associations
+          #
+          # @param [Hash] options (optional)
+          # @return [ActiveRecord::Associations::CollectionProxy]
           def decorate(options = {})
             @decorated = true
 
@@ -14,6 +18,9 @@ module Light
             self
           end
 
+          # Check current association is decorated or not
+          #
+          # @return [Bool]
           def decorated?
             !@decorated.nil?
           end

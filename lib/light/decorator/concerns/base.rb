@@ -4,6 +4,10 @@ module Light
       module Base
         extend ActiveSupport::Concern
 
+        # Decorate ActiveRecord::Model
+        #
+        # @param [Hash] options (optional)
+        # @return [Object] decorator or self
         def decorate(options = {})
           return self if decorated?
 
@@ -14,6 +18,9 @@ module Light
           self
         end
 
+        # Check current ActiveRecord::Model is decorated or not
+        #
+        # @return [Bool]
         def decorated?
           false
         end
@@ -39,10 +46,19 @@ module Light
         end
 
         module ClassMethods
+          # Decorate all scope for ActiveRecord::Model
+          #
+          # @param [Hash] options (optional)
+          # @return [ActiveRecord::Relation]
           def decorate(options = {})
             all.decorate(options)
           end
 
+          # Find ActiveRecord::Model and decorate it
+          #
+          # @param [Integer] id
+          # @param [Hash] options (optional)
+          # @return [ActiveRecord::Model]
           def find_and_decorate(id, options = {})
             find(id).decorate(options)
           end

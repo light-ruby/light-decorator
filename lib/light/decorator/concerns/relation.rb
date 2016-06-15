@@ -4,6 +4,10 @@ module Light
       module Relation
         extend ActiveSupport::Concern
 
+        # Decorate ActiveRecord::Relation
+        #
+        # @param [Hash] options
+        # @return [ActiveRecord::Relation] decorated collection
         def decorate(options = {})
           @decorated = true
 
@@ -12,6 +16,9 @@ module Light
           self
         end
 
+        # Check current ActiveRecord::Relation is decorated or not
+        #
+        # @return [Bool]
         def decorated?
           !@decorated.nil?
         end
