@@ -1,7 +1,7 @@
 PATH
   remote: ../
   specs:
-    light-decorator (0.5.1)
+    light-decorator (0.5.2)
       rails (>= 4.0.0)
       request_store (>= 1.0.0)
 
