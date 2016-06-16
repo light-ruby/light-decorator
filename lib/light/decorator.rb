@@ -13,8 +13,6 @@ require 'light/decorator/decorate'
 
 module Light
   module Decorator
-    NOT_DELEGATABLE_METHODS = (
-      Kernel.methods + ActiveRecord::Base.methods + [:decorated?, :==, :===, :eql?, :equal?]
-    ).freeze
+    FORCE_DELEGATE = [:to_param].freeze
   end
 end
