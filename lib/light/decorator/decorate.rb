@@ -62,7 +62,8 @@ module Light
       def decorate_associations
         object.class.reflect_on_all_associations.map(&:name).each do |reflection_name|
           define_singleton_method reflection_name do
-            object.public_send(reflection_name).decorate(@options.reverse_merge(soft: true))
+            reflection = object.public_send(reflection_name)
+            reflection.decorate(@options.reverse_merge(soft: true)) if reflection
           end
         end
       end
