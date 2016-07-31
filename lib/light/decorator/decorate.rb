@@ -1,6 +1,6 @@
 module Light
   module Decorator
-    class Decorate
+    class Base
       # @return original object
       attr_reader :object
 

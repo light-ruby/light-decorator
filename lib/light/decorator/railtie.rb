@@ -2,7 +2,6 @@ module Light
   module Decorator
     class Railtie < Rails::Railtie
       config.after_initialize do |app|
-        # Eager loading of Decorators classes
         app.config.paths.add 'app/decorators', eager_load: true
       end
 
@@ -22,6 +21,13 @@ module Light
             include ::Light::Decorator::ViewContext
           end
         end
+      end
+
+      generators do |app|
+        Rails::Generators.configure! app.config.generators
+        Rails::Generators.hidden_namespaces.uniq!
+
+        require 'generators/rails/hooks'
       end
     end
   end

@@ -1,12 +1,12 @@
-# Light::Decorator
+# Light Decorator
 
 [![Build Status](https://travis-ci.org/light-ruby/light-decorator.svg?branch=master)](https://travis-ci.org/light-ruby/light-decorator)
 [![Code Climate](https://codeclimate.com/github/light-ruby/light-decorator/badges/gpa.svg)](https://codeclimate.com/github/light-ruby/light-decorator)
 [![Test Coverage](https://codeclimate.com/github/light-ruby/light-decorator/badges/coverage.svg)](https://codeclimate.com/github/light-ruby/light-decorator/coverage)
 
-Easiest and fast way to decorate Ruby on Rails models.
+Easiest and fast way to decorate Ruby on Rails models. Compatible with Rails 5.0 and 4.2, 4.1, 4.0.
 
-Decorator pattern - What is it?
+Decorator Pattern – What is it? Check it here:
 - [Wikipedia](https://en.wikipedia.org/wiki/Decorator_pattern)
 - [Thoughtbot](https://robots.thoughtbot.com/evaluating-alternative-decorator-implementations-in)
 
@@ -15,20 +15,19 @@ Decorator pattern - What is it?
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'light-decorator', '~> 0.5.3'
+gem 'light-decorator', '~> 1.0.0'
+```
+
+Create base class `ApplicationDecorator` in folder `app/decorators/application_decorator.rb`
+
+```
+rails g light:decorator:install
 ```
 
 ## Usage
 
-Create the `ApplicationDecorator`
-
-```ruby
-# app/decorators/application_decorator.rb
-class ApplicationDecorator < Light::Decorator::Decorate
-end
-```
-
 Create decorator for your model. For example we will use the `User` model.
+We can manually create file:
 
 ```ruby
 # app/decorators/user_decorator.rb
@@ -37,6 +36,12 @@ class UserDecorator < Application
     "#{object.first_name} #{object.last_name}"
   end
 end
+```
+
+Or we can just use command to create this file:
+
+```
+rails g decorator User
 ```
 
 Decorate your model in controller or anywhere.
@@ -75,15 +80,15 @@ class UserDecorator < ApplicationDecorator
   def full_name_link
     helpers.link_to full_name, user_path(object)
     # or
-    h.link_to full_name, user_path(object)
+    h.link_to full_name, user_path(o)
   end
 end
 ```
 
 ## Next steps
 
-- [ ] Create rake task `light-decorator:install`
-- [ ] Create generators
+- [x] Create installation generator
+- [x] Create decorator generator
 - [ ] Create configuration file
 
 ## Contributing

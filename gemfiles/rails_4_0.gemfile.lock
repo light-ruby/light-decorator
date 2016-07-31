@@ -59,6 +59,9 @@ GEM
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
     ffaker (2.2.0)
+    generator_spec (0.9.3)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     i18n (0.7.0)
     json (1.8.3)
     mail (2.6.4)
@@ -134,6 +137,7 @@ DEPENDENCIES
   combustion (~> 0.5.4)
   factory_girl (~> 4.0)
   ffaker (~> 2.2.0)
+  generator_spec (~> 0.9.3)
   light-decorator!
   rails (= 4.0.13)
   rake (~> 10.0)

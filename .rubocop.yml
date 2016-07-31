@@ -1,6 +1,11 @@
 AllCops:
   TargetRubyVersion: 2.0
   DisabledByDefault: true
+  Exclude:
+    - 'lib/generators/rails/decorator/templates/decorator.rb'
+    - 'lib/generators/rspec/decorator/templates/decorator_spec.rb'
+    - 'lib/generators/test_unit/decorator/templates/decorator_test.rb'
+    - 'lib/generators/light/decorator/install/templates/application_decorator.rb'
 
 #################### Lint ################################
 
