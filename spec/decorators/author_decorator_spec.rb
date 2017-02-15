@@ -111,4 +111,9 @@ RSpec.describe AuthorDecorator do
       end
     end
   end
+
+  it 'is_a?' do
+    expect(decorated_author).to be_a(Author)
+    expect(decorated_author).to be_a(AuthorDecorator)
+  end
 end

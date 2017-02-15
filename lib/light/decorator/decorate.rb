@@ -41,6 +41,14 @@ module Light
         super || object.eql?(other)
       end
 
+      def is_a?(klass)
+        super || object.is_a?(klass)
+      end
+
+      def kind_of?(klass)
+        super || object.kind_of?(klass)
+      end
+
       class << self
         alias decorate new
       end

@@ -15,7 +15,7 @@ Decorator Pattern – What is it? Check it here:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'light-decorator', '~> 1.0.0'
+gem 'light-decorator', '~> 1.0.1'
 ```
 
 Create base class `ApplicationDecorator` in folder `app/decorators/application_decorator.rb`
